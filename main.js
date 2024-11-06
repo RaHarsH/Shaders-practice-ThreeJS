@@ -14,7 +14,7 @@ const camera = new THREE.PerspectiveCamera(
 
 camera.position.z = 5;
 
-const geometry = new THREE.PlaneGeometry(2, 2)
+const geometry = new THREE.PlaneGeometry(2, 2, 100, 100)
 const material = new THREE.ShaderMaterial({
   vertexShader: vertex,
   fragmentShader: fragment,
@@ -39,7 +39,7 @@ controls.enableDamping = true;
 const clock = new THREE.Clock();
 
 const animate = () => {
-  material.uniforms.uTime.value = clock.getElapsedTime()
+  material.uniforms.uTime.value += 0.05
   controls.update()
   requestAnimationFrame(animate)
   renderer.render(scene, camera)
