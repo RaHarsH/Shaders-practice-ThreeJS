@@ -14,7 +14,7 @@ const camera = new THREE.PerspectiveCamera(
 
 camera.position.z = 5;
 
-const geometry = new THREE.PlaneGeometry(2, 2, 100, 100)
+const geometry = new THREE.BoxGeometry(2, 2, 2, 100, 100)
 const material = new THREE.ShaderMaterial({
   vertexShader: vertex,
   fragmentShader: fragment,
@@ -24,9 +24,10 @@ const material = new THREE.ShaderMaterial({
   }
 })
 
-const plane = new THREE.Mesh(geometry, material)
+const cube = new THREE.Mesh(geometry, material)
+cube.rotation.x= 0.35
 
-scene.add(plane);
+scene.add(cube);
 
 const canvas = document.querySelector('canvas');
 const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
@@ -38,8 +39,10 @@ controls.enableDamping = true;
 
 const clock = new THREE.Clock();
 
+
 const animate = () => {
   material.uniforms.uTime.value += 0.05
+  cube.rotation.y = clock.getElapsedTime()
   controls.update()
   requestAnimationFrame(animate)
   renderer.render(scene, camera)

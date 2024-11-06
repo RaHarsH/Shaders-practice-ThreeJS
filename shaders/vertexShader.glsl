@@ -6,6 +6,8 @@ void main() {
 
     vec3 pos = position;
     pos.x += .2*sin(pos.x*3. * pos.y*2. + uTime);
+    // pos.y += .2*sin(pos.x*3. * pos.y*2. + uTime);
+    // pos.z += .2*sin(pos.x*3. * pos.y*2. + uTime);
 
     vec4 modelPosition = modelMatrix * vec4(pos, 1.0);
     vec4 viewPosition = viewMatrix * modelPosition;
